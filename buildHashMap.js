@@ -76,6 +76,7 @@ class HashMap {
       hash = (hash << 5) + hash + string.charCodeAt(i);
       hash = hash & hash;
     }
+    console.log(hash>>>0);
     return hash >>> 0;
   }
 }
