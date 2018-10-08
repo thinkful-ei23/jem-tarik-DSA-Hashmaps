@@ -1,13 +1,5 @@
 'use strict';
 
-class _Node {
-  constructor(key, value, next) {
-    this.key = key;
-    this.value = value;
-    this.next = next;
-  }
-}
-
 class HashMap {
   constructor(initialCapacity=8) {
     this.length = 0;
@@ -42,7 +34,11 @@ class HashMap {
       let LinkedList = {
         head: null,
         insertFirst: (k, v) => {
-          LinkedList.head  = new _Node(k, v, LinkedList.head);
+          LinkedList.head = {
+            key: k,
+            value: v,
+            next: LinkedList.head
+          };
         },
         find: (k) => {
           let currNode = LinkedList.head;
@@ -96,10 +92,7 @@ class HashMap {
 
     for (let i=start; i<start + this._capacity; i++) {
       const index = i % this._capacity;
-      const slot = this._slots[index];
-      if (slot === undefined || (slot.key == key)) {
-        return index;
-      }
+      return index;
     }
   }
 
